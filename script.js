@@ -17,3 +17,4 @@ console.log(screens.length);
 console.log('Стоимость верстки экрана: ' + screenPrice + "RUB" + " " + "Стоимость разработки сайта: " + fullPrice + "RUB")
 
 console.log(screens.toLowerCase())
+console.log(screens.split(", "))
