@@ -1,9 +1,9 @@
-let title;
-let screens;
-let screenPrice;
-let rollback;
-let fullPrice;
-let adaptive;
+let title = "Начало обучения";
+let screens = "Простые, сложные, интерактивные";
+let screenPrice = 100;
+let rollback = 5;
+let fullPrice = 35000;
+let adaptive = true;
 
 alert('Привет мир');
 
