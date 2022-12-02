@@ -5,7 +5,7 @@ let rollback = 5;
 let fullPrice = 35000;
 let adaptive = true;
 
-//alert('Привет мир');
+
 console.log('hello');
 
 console.log(typeof title);
@@ -16,5 +16,7 @@ console.log(screens.length);
 
 console.log('Стоимость верстки экрана: ' + screenPrice + "RUB" + " " + "Стоимость разработки сайта: " + fullPrice + "RUB")
 
-console.log(screens.toLowerCase())
-console.log(screens.split(", "))
+console.log(screens.toLowerCase());
+console.log(screens.split(", "));
+
+alert('Привет мир');
