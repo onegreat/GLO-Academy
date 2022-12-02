@@ -5,6 +5,10 @@ let rollback = 5;
 let fullPrice = 35000;
 let adaptive = true;
 
-alert('Привет мир');
-
+//alert('Привет мир');
 console.log('hello');
+
+console.log(typeof title);
+console.log(typeof fullPrice);
+console.log(typeof adaptive);
+
