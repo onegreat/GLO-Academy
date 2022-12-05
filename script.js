@@ -5,12 +5,15 @@ let title = prompt("Как называется проект?");
 let screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?");
 let screenPrice = +prompt("Сколько будет стоить работа?");
 let rollback = 5;
-let fullPrice = 35000;
 let adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный");
-let serviceOne;
-let serviceTwo;
+let serviceOneTitle = prompt("Название дополнтельной услуги - 1");
+let serviceOnePrice = +prompt("Стоимость дополнтельной услуги - 1");
+let serviceTwoTitle = prompt("Название дополнтельной услуги - 2");
+let serviceTwoPrice = +prompt("Стоимость дополнтельной услуги - 2");
+let fullPrice = screenPrice + serviceOnePrice + serviceTwoPrice;
+let
 
-
+    console.log(fullPrice);
 /*
 console.log('hello');
 
