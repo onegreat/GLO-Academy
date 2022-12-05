@@ -11,9 +11,10 @@ let serviceOnePrice = +prompt("Стоимость дополнтельной у�
 let serviceTwoTitle = prompt("Название дополнтельной услуги - 2");
 let serviceTwoPrice = +prompt("Стоимость дополнтельной услуги - 2");
 let fullPrice = screenPrice + serviceOnePrice + serviceTwoPrice;
-let
+let servicePercentPrice = fullPrice - (fullPrice / 100 * rollback);
 
-    console.log(fullPrice);
+console.log(fullPrice);
+console.log(Math.ceil(servicePercentPrice));
 /*
 console.log('hello');
 
