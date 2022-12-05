@@ -1,11 +1,14 @@
-const title = "Начало обучения";
-const screens = "Простые, сложные, интерактивные";
-const screenPrice = 1000;
-const rollback = 5;
-const fullPrice = 35000;
-const adaptive = true;
+"use strict";
 
+// Изменил все const на let, т.к значения теперь будут меняться.
+let title = prompt("Как называется проект?");
+let screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?");
+let screenPrice = +prompt("Сколько будет стоить работа?");
+let rollback = 5;
+let fullPrice = 35000;
+let adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный");
 
+/*
 console.log('hello');
 
 console.log(typeof title);
@@ -18,4 +21,6 @@ console.log('Стоимость верстки экрана: ' + screenPrice + "
 
 console.log(screens.toLowerCase(), screens.split(", "));
 
-alert('Привет мир');
+// alert('Привет мир');
+
+*/
