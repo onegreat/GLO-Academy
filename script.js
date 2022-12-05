@@ -7,6 +7,9 @@ let screenPrice = +prompt("Сколько будет стоить работа?"
 let rollback = 5;
 let fullPrice = 35000;
 let adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный");
+let serviceOne;
+let serviceTwo;
+
 
 /*
 console.log('hello');
