@@ -10,8 +10,6 @@ let serviceOneTitle = prompt("Название дополнтельной усл
 let serviceOnePrice = +prompt("Стоимость дополнтельной услуги - 1");
 let serviceTwoTitle = prompt("Название дополнтельной услуги - 2");
 let serviceTwoPrice = +prompt("Стоимость дополнтельной услуги - 2");
-// let fullPrice = screenPrice + serviceOnePrice + serviceTwoPrice;
-// let servicePercentPrice = fullPrice - (fullPrice / 100 * rollback);
 let allServicePrices, fullPrice, servicePercentPrice;
 
 //function expression
@@ -57,28 +55,9 @@ showTypeOf(title);
 showTypeOf(fullPrice);
 showTypeOf(adaptive);
 
-console.log(showTypeOf(title))
 console.log("Стоимость оказанных услуг: " + getAllServicePrices(serviceOnePrice, serviceTwoPrice))
 console.log("Общая сумма работы составит: " + getFullPrice(screenPrice, allServicePrices))
 console.log("Общая сумма с учетом отката посреднику " + getServicePercentPrices(fullPrice, rollback))
 console.log(getRollbackMessage(fullPrice))
 console.log('Стоимость верстки экрана: ' + screenPrice + "RUB" + " " + "Стоимость разработки сайта: " + fullPrice + "RUB")
 
-/*
-console.log(fullPrice);
-console.log(Math.ceil(servicePercentPrice));
-
-console.log('hello');
-
-console.log(typeof title);
-console.log(typeof fullPrice);
-console.log(typeof adaptive);
-
-console.log(screens.length);
-
-
-console.log(screens.toLowerCase(), screens.split(", "));
-
-// alert('Привет мир');
-
-*/
