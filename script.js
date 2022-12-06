@@ -1,17 +1,16 @@
 "use strict";
 
-// Изменил все const на let, т.к значения теперь будут меняться.
-let title = prompt("Как называется проект?");
-let screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?");
-let screenPrice = +prompt("Сколько будет стоить работа?");
-let rollback = 5;
-let adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный");
-let serviceOneTitle = prompt("Название дополнтельной услуги - 1");
-let serviceOnePrice = +prompt("Стоимость дополнтельной услуги - 1");
-let serviceTwoTitle = prompt("Название дополнтельной услуги - 2");
-let serviceTwoPrice = +prompt("Стоимость дополнтельной услуги - 2");
-let fullPrice = screenPrice + serviceOnePrice + serviceTwoPrice;
-let servicePercentPrice = fullPrice - (fullPrice / 100 * rollback);
+const title = prompt("Как называется проект?");
+const screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?");
+const screenPrice = +prompt("Сколько будет стоить работа?");
+const rollback = 5;
+const adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный");
+const serviceOneTitle = prompt("Название дополнтельной услуги - 1");
+const serviceOnePrice = +prompt("Стоимость дополнтельной услуги - 1");
+const serviceTwoTitle = prompt("Название дополнтельной услуги - 2");
+const serviceTwoPrice = +prompt("Стоимость дополнтельной услуги - 2");
+const fullPrice = screenPrice + serviceOnePrice + serviceTwoPrice;
+const servicePercentPrice = fullPrice - (fullPrice / 100 * rollback);
 
 console.log(fullPrice);
 console.log(Math.ceil(servicePercentPrice));
