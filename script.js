@@ -19,6 +19,22 @@ const getAllServicePrices = function (srvPrice1, srvPrice2) {
     return srvPrice1 + srvPrice2
 }
 
+const showTypeOf = function (variable) {
+    console.log(variable, typeof variable)
+}
+
+const getRollbackMessage = function (price) {
+    if (price >= 30000) {
+        return "Ваша скидка 10%"
+    } else if (price >= 15000 && fullPrice < 30000) {
+        return "Даем скидку в 5 %"
+    } else if (price < 15000 && fullPrice > 0) {
+        return "Скидка не предусмотрена"
+    } else if (price < 0) {
+        return "Что-то пошло не так!"
+    }
+}
+
 //function declaration
 function getFullPrice(screenPrice, allServicePrices) {
     return screenPrice + allServicePrices
@@ -32,25 +48,22 @@ function getServicePercentPrices(fullPrice, rollback) {
     return fullPrice - rollback
 }
 
-if (fullPrice >= 30000) {
-    console.log("Ваша скидка 10%");
-} else if (fullPrice > 15000 && fullPrice < 30000) {
-    console.log("Даем скидку в 5%");
-} else if (fullPrice < 15000 && fullPrice > 0) {
-    console.log("Скидка не предусмотрена");
-} else if (fullPrice < 0) {
-    console.log("Что-то пошло не так!");
-}
-
 allServicePrices = getAllServicePrices(serviceOnePrice, serviceTwoPrice);
 fullPrice = getFullPrice(screenPrice, allServicePrices);
 title = getTitle(title);
 servicePercentPrice = getServicePercentPrices(fullPrice, rollback);
 
+showTypeOf(title);
+showTypeOf(fullPrice);
+showTypeOf(adaptive);
 
+console.log(showTypeOf(title))
 console.log("Стоимость оказанных услуг: " + getAllServicePrices(serviceOnePrice, serviceTwoPrice))
 console.log("Общая сумма работы составит: " + getFullPrice(screenPrice, allServicePrices))
-console.log("Общая сумма с учетом отката " + getServicePercentPrices(fullPrice, rollback))
+console.log("Общая сумма с учетом отката посреднику " + getServicePercentPrices(fullPrice, rollback))
+console.log(getRollbackMessage(fullPrice))
+console.log('Стоимость верстки экрана: ' + screenPrice + "RUB" + " " + "Стоимость разработки сайта: " + fullPrice + "RUB")
+
 /*
 console.log(fullPrice);
 console.log(Math.ceil(servicePercentPrice));
@@ -63,7 +76,6 @@ console.log(typeof adaptive);
 
 console.log(screens.length);
 
-console.log('Стоимость верстки экрана: ' + screenPrice + "RUB" + " " + "Стоимость разработки сайта: " + fullPrice + "RUB")
 
 console.log(screens.toLowerCase(), screens.split(", "));
 
