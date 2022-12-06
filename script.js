@@ -1,19 +1,36 @@
 "use strict";
 
-const title = prompt("Как называется проект?");
-const screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?");
-const screenPrice = +prompt("Сколько будет стоить работа?");
-const rollback = 5;
-const adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный");
-const serviceOneTitle = prompt("Название дополнтельной услуги - 1");
-const serviceOnePrice = +prompt("Стоимость дополнтельной услуги - 1");
-const serviceTwoTitle = prompt("Название дополнтельной услуги - 2");
-const serviceTwoPrice = +prompt("Стоимость дополнтельной услуги - 2");
-const fullPrice = screenPrice + serviceOnePrice + serviceTwoPrice;
-const servicePercentPrice = fullPrice - (fullPrice / 100 * rollback);
+// Изменил все const на let, т.к значения теперь будут меняться.
+let title = prompt("Как называется проект?");
+let screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?");
+let screenPrice = +prompt("Сколько будет стоить работа?");
+let rollback = 5;
+let adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный");
+let serviceOneTitle = prompt("Название дополнтельной услуги - 1");
+let serviceOnePrice = +prompt("Стоимость дополнтельной услуги - 1");
+let serviceTwoTitle = prompt("Название дополнтельной услуги - 2");
+let serviceTwoPrice = +prompt("Стоимость дополнтельной услуги - 2");
+// let fullPrice = screenPrice + serviceOnePrice + serviceTwoPrice;
+// let servicePercentPrice = fullPrice - (fullPrice / 100 * rollback);
+let allServicePrices, fullPrice, servicePercentPrice;
 
-console.log(fullPrice);
-console.log(Math.ceil(servicePercentPrice));
+//function expression
+const getAllServicePrices = function (srvPrice1, srvPrice2) {
+    return srvPrice1 + srvPrice2
+}
+
+//function declaration
+function getFullPrice(screenPrice, allServicePrices) {
+    return screenPrice + allServicePrices
+}
+
+function getTitle(title) {
+    return title.trim()[0].toUpperCase() + title.slice(1).toLowerCase()
+}
+
+function getServicePercentPrices(fullPrice, rollback) {
+    return fullPrice - rollback
+}
 
 if (fullPrice >= 30000) {
     console.log("Ваша скидка 10%");
@@ -25,9 +42,19 @@ if (fullPrice >= 30000) {
     console.log("Что-то пошло не так!");
 }
 
+allServicePrices = getAllServicePrices(serviceOnePrice, serviceTwoPrice);
+fullPrice = getFullPrice(screenPrice, allServicePrices);
+title = getTitle(title);
+servicePercentPrice = getServicePercentPrices(fullPrice, rollback);
 
 
+console.log("Стоимость оказанных услуг: " + getAllServicePrices(serviceOnePrice, serviceTwoPrice))
+console.log("Общая сумма работы составит: " + getFullPrice(screenPrice, allServicePrices))
+console.log("Общая сумма с учетом отката " + getServicePercentPrices(fullPrice, rollback))
 /*
+console.log(fullPrice);
+console.log(Math.ceil(servicePercentPrice));
+
 console.log('hello');
 
 console.log(typeof title);
