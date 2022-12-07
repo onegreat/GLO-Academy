@@ -1,20 +1,26 @@
 "use strict";
 
 // Изменил все const на let, т.к значения теперь будут меняться.
-let title = prompt("Как называется проект?");
-let screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?");
-let screenPrice = +prompt("Сколько будет стоить работа?");
+let title = prompt("Как называется проект?", "kacl");
+let screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?", "prost");
+let screenPrice = +prompt("Сколько будет стоить работа?", 15000);
 let rollback = 5;
 let adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный");
-let serviceOneTitle = prompt("Название дополнтельной услуги - 1");
-let serviceOnePrice = +prompt("Стоимость дополнтельной услуги - 1");
-let serviceTwoTitle = prompt("Название дополнтельной услуги - 2");
-let serviceTwoPrice = +prompt("Стоимость дополнтельной услуги - 2");
+// let serviceOneTitle = prompt("Название дополнтельной услуги - 1");
+// let serviceOnePrice = +prompt("Стоимость дополнтельной услуги - 1");
+// let serviceTwoTitle = prompt("Название дополнтельной услуги - 2");
+// let serviceTwoPrice = +prompt("Стоимость дополнтельной услуги - 2");
 let allServicePrices, fullPrice, servicePercentPrice;
 
 //function expression
-const getAllServicePrices = function (srvPrice1, srvPrice2) {
-    return srvPrice1 + srvPrice2
+const getAllServicePrices = function () {
+    let sum = 0
+
+    for (let i = 0; i < 2; i++) {
+        sum += +prompt("Стоимость дополнтельной услуги?");
+    }
+    return sum
+    // return srvPrice1 + srvPrice2
 }
 
 const showTypeOf = function (variable) {
@@ -24,9 +30,9 @@ const showTypeOf = function (variable) {
 const getRollbackMessage = function (price) {
     if (price >= 30000) {
         return "Ваша скидка 10%"
-    } else if (price >= 15000 && fullPrice < 30000) {
+    } else if (price >= 15000 && price < 30000) {
         return "Даем скидку в 5 %"
-    } else if (price < 15000 && fullPrice > 0) {
+    } else if (price < 15000 && price > 0) {
         return "Скидка не предусмотрена"
     } else if (price < 0) {
         return "Что-то пошло не так!"
@@ -46,7 +52,7 @@ function getServicePercentPrices(fullPrice, rollback) {
     return fullPrice - rollback
 }
 
-allServicePrices = getAllServicePrices(serviceOnePrice, serviceTwoPrice);
+allServicePrices = getAllServicePrices();
 fullPrice = getFullPrice(screenPrice, allServicePrices);
 title = getTitle(title);
 servicePercentPrice = getServicePercentPrices(fullPrice, rollback);
@@ -55,7 +61,7 @@ showTypeOf(title);
 showTypeOf(fullPrice);
 showTypeOf(adaptive);
 
-console.log("Стоимость оказанных услуг: " + getAllServicePrices(serviceOnePrice, serviceTwoPrice))
+console.log("allServicePrices", allServicePrices)
 console.log("Общая сумма работы составит: " + getFullPrice(screenPrice, allServicePrices))
 console.log("Общая сумма с учетом отката посреднику " + getServicePercentPrices(fullPrice, rollback))
 console.log(getRollbackMessage(fullPrice))
