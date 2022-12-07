@@ -6,17 +6,26 @@ let screens = prompt("Какие типы экранов требуются: П�
 let screenPrice = +prompt("Сколько будет стоить работа?", 15000);
 let rollback = 5;
 let adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный");
-// let serviceOneTitle = prompt("Название дополнтельной услуги - 1");
-// let serviceOnePrice = +prompt("Стоимость дополнтельной услуги - 1");
-// let serviceTwoTitle = prompt("Название дополнтельной услуги - 2");
-// let serviceTwoPrice = +prompt("Стоимость дополнтельной услуги - 2");
-let allServicePrices, fullPrice, servicePercentPrice;
+let serviceOneTitle;
+let serviceTwoTitle;
+let allServicePrices;
+let fullPrice;
+let servicePercentPrice;
+
+
 
 //function expression
 const getAllServicePrices = function () {
     let sum = 0
 
     for (let i = 0; i < 2; i++) {
+
+        if (i === 0) {
+            serviceOneTitle = prompt("Название дополнтельной услуги - 1");
+        } else if (i === 1) {
+            serviceTwoTitle = prompt("Название дополнтельной услуги - 2");
+        }
+
         sum += +prompt("Стоимость дополнтельной услуги?");
     }
     return sum
