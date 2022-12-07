@@ -1,11 +1,11 @@
 "use strict";
 
 // Изменил все const на let, т.к значения теперь будут меняться.
-let title = prompt("Как называется проект?", "kacl");
-let screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?", "prost");
-let screenPrice = +prompt("Сколько будет стоить работа?", 15000);
+let title;
+let screens;
+let screenPrice;
+let adaptive;
 let rollback = 5;
-let adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный");
 let serviceOneTitle;
 let serviceTwoTitle;
 let allServicePrices;
@@ -13,7 +13,20 @@ let fullPrice;
 let servicePercentPrice;
 
 
+const isNumber = function (num) {
+    return !isNaN(parseFloat(num)) && isFinite(num);
+}
 
+const asking = function () {
+    title = prompt("Как называется проект?", "kacl")
+    screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?", "prost")
+
+    do {
+        screenPrice = prompt("Сколько будет стоить работа?")
+    } while (!isNumber(screenPrice));
+
+    adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный")
+}
 //function expression
 const getAllServicePrices = function () {
     let sum = 0
@@ -61,6 +74,7 @@ function getServicePercentPrices(fullPrice, rollback) {
     return fullPrice - rollback
 }
 
+asking()
 allServicePrices = getAllServicePrices();
 fullPrice = getFullPrice(screenPrice, allServicePrices);
 title = getTitle(title);
