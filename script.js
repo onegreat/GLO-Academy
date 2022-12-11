@@ -1,16 +1,5 @@
 "use strict";
 
-// let title;
-// let screens;
-// let screenPrice;
-// let adaptive;
-// let serviceOneTitle;
-// let serviceTwoTitle;
-// let allServicePrices;
-// let fullPrice;
-// let servicePercentPrice;
-// let rollback = 5;
-
 const appData = {
     title: '',
     screens: '',
@@ -22,23 +11,21 @@ const appData = {
     fullPrice: 0,
     servicePercentPrice: 0,
     rollback: 5,
+    isNumber: function (num) {
+        return !isNaN(parseFloat(num)) && isFinite(num);
+    },
     asking: function () {
         appData.title = prompt("Как называется проект?")
         appData.screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?")
 
         do {
             appData.screenPrice = prompt("Сколько будет стоить работа?")
-        } while (!isNumber(appData.screenPrice));
+        } while (!appData.isNumber(appData.screenPrice));
 
         appData.adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный")
     }
+
 }
-
-
-const isNumber = function (num) {
-    return !isNaN(parseFloat(num)) && isFinite(num);
-}
-
 
 const getAllServicePrices = function () {
     let sum = 0
@@ -53,7 +40,7 @@ const getAllServicePrices = function () {
         }
         do {
             price = prompt("Стоимость дополнтельной услуги?");
-        } while (!isNumber(price))
+        } while (!appData.isNumber(price))
 
         sum += +price
     }
