@@ -5,12 +5,12 @@ let title;
 let screens;
 let screenPrice;
 let adaptive;
-let rollback = 5;
 let serviceOneTitle;
 let serviceTwoTitle;
 let allServicePrices;
 let fullPrice;
 let servicePercentPrice;
+let rollback = 5;
 
 
 const isNumber = function (num) {
@@ -18,8 +18,8 @@ const isNumber = function (num) {
 }
 
 const asking = function () {
-    title = prompt("Как называется проект?", "kacl")
-    screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?", "prost")
+    title = prompt("Как называется проект?")
+    screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?")
 
     do {
         screenPrice = prompt("Сколько будет стоить работа?")
