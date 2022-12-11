@@ -14,15 +14,17 @@ const appData = {
     isNumber: function (num) {
         return !isNaN(parseFloat(num)) && isFinite(num);
     },
-    asking: function () {
-        appData.title = prompt("Как называется проект?")
-        appData.screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?")
+    start: function () {
+        asking: {
+            appData.title = prompt("Как называется проект?")
+            appData.screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?")
 
-        do {
-            appData.screenPrice = +prompt("Сколько будет стоить работа?")
-        } while (!appData.isNumber(appData.screenPrice));
+            do {
+                appData.screenPrice = +prompt("Сколько будет стоить работа?")
+            } while (!appData.isNumber(appData.screenPrice));
 
-        appData.adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный")
+            appData.adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный")
+        }
     },
     getAllServicePrices: function () {
         let sum = 0
@@ -63,7 +65,7 @@ const appData = {
 }
 
 
-appData.asking()
+appData.start()
 appData.allServicePrices = appData.getAllServicePrices();
 appData.fullPrice = appData.getFullPrice(appData.screenPrice, appData.allServicePrices);
 appData.title = appData.getTitle(appData.title);
