@@ -25,6 +25,24 @@ const appData = {
 
             appData.adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный")
         }
+        logger: {
+            appData.allServicePrices = appData.getAllServicePrices();
+            appData.fullPrice = appData.getFullPrice(appData.screenPrice, appData.allServicePrices);
+            appData.title = appData.getTitle(appData.title);
+            appData.servicePercentPrice = appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
+
+            for (let key in appData) {
+                console.log("Ключ " + key + " Значение " + appData[key])
+            }
+
+            console.log(appData.fullPrice);
+            console.log(appData.servicePercentPrice);
+
+            for (let key in appData.start) {
+                console.log("Ключ " + key + " Значение " + key[appData.start])
+            }
+
+        }
     },
     getAllServicePrices: function () {
         let sum = 0
@@ -66,11 +84,5 @@ const appData = {
 
 
 appData.start()
-appData.allServicePrices = appData.getAllServicePrices();
-appData.fullPrice = appData.getFullPrice(appData.screenPrice, appData.allServicePrices);
-appData.title = appData.getTitle(appData.title);
-appData.servicePercentPrice = appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
 
-console.log('appData.allServicePrices ', appData.allServicePrices)
-console.log(appData.fullPrice);
-console.log(appData.servicePercentPrice);
+
