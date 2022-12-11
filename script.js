@@ -80,9 +80,3 @@ fullPrice = getFullPrice(screenPrice, allServicePrices);
 title = getTitle(title);
 servicePercentPrice = getServicePercentPrices(fullPrice, rollback);
 
-console.log("allServicePrices", allServicePrices)
-console.log("Общая сумма работы составит: " + getFullPrice(screenPrice, allServicePrices))
-console.log("Общая сумма с учетом отката посреднику " + getServicePercentPrices(fullPrice, rollback))
-console.log(getRollbackMessage(fullPrice))
-console.log('Стоимость верстки экрана: ' + screenPrice + "RUB" + " " + "Стоимость разработки сайта: " + fullPrice + "RUB")
-
