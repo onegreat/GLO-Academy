@@ -32,21 +32,21 @@ const getAllServicePrices = function () {
     let sum = 0
 
     for (let i = 0; i < 2; i++) {
+        let price = 0
 
         if (i === 0) {
             serviceOneTitle = prompt("Название дополнтельной услуги - 1");
         } else if (i === 1) {
             serviceTwoTitle = prompt("Название дополнтельной услуги - 2");
         }
+        do {
+            price = prompt("Стоимость дополнтельной услуги?");
+        } while (!isNumber(price))
 
-        sum += +prompt("Стоимость дополнтельной услуги?");
+        sum += +price
     }
-    return sum
-    // return srvPrice1 + srvPrice2
-}
 
-const showTypeOf = function (variable) {
-    console.log(variable, typeof variable)
+    return sum
 }
 
 const getRollbackMessage = function (price) {
@@ -79,10 +79,6 @@ allServicePrices = getAllServicePrices();
 fullPrice = getFullPrice(screenPrice, allServicePrices);
 title = getTitle(title);
 servicePercentPrice = getServicePercentPrices(fullPrice, rollback);
-
-showTypeOf(title);
-showTypeOf(fullPrice);
-showTypeOf(adaptive);
 
 console.log("allServicePrices", allServicePrices)
 console.log("Общая сумма работы составит: " + getFullPrice(screenPrice, allServicePrices))
