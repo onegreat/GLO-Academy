@@ -15,44 +15,53 @@ const appData = {
         return !isNaN(parseFloat(num)) && isFinite(num);
     },
     start: function () {
-        appData.asking()
-        appData.allServicePrices = appData.getAllServicePrices();
-        appData.fullPrice = appData.getFullPrice(appData.screenPrice, appData.allServicePrices);
-        appData.title = appData.getTitle(appData.title);
-        appData.servicePercentPrice = appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
+        asking: {
+            appData.title = prompt("Как называется проект?", "Калькулятор верстки")
+            appData.screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?", "Простые, сложные")
 
-        // for (let key in appData) {
-        //     console.log("Ключ " + key + " Значение " + appData[key])
-        // }
-        // for (let key in appData.start) {
-        //     console.log("Ключ " + key + " Значение " + key[appData.start])
-        // }
-        appData.logger()
-    },
-    asking: function () {
-        appData.title = prompt("Как называется проект?")
-        appData.screens = prompt("Какие типы экранов требуются: Простые, сложные, интерактивные?")
+            do {
+                appData.screenPrice = +prompt("Сколько будет стоить работа?", 30000)
+            } while (!appData.isNumber(appData.screenPrice));
 
-        do {
-            appData.screenPrice = +prompt("Сколько будет стоить работа?")
-        } while (!appData.isNumber(appData.screenPrice));
+            appData.adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный")
+        }
+        logger: {
+            appData.allServicePrices = appData.getAllServicePrices();
+            appData.fullPrice = appData.getFullPrice(appData.screenPrice, appData.allServicePrices);
+            appData.title = appData.getTitle(appData.title);
+            appData.servicePercentPrice = appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
 
-        appData.adaptive = confirm("Нужен ли адаптив на сайте? Нажмите 'ОК', если ответ положительный")
+            for (let key in appData) {
+                console.log("Ключ " + key + " Значение " + appData[key])
+            }
 
+            console.log(appData.fullPrice);
+            console.log(appData.servicePercentPrice);
+
+            for (let key in appData.start) {
+                console.log("Ключ " + key + " Значение " + key[appData.start])
+            }
+
+        }
     },
     getAllServicePrices: function () {
         let sum = 0
 
         for (let i = 0; i < 2; i++) {
-
+            let price = 0
             if (i === 0) {
-                appData.serviceOneTitle = +prompt("Название дополнтельной услуги - 1");
+                appData.serviceOneTitle = prompt("Название дополнтельной услуги - 1");
             } else if (i === 1) {
-                appData.serviceTwoTitle = +prompt("Название дополнтельной услуги - 2");
+                appData.serviceTwoTitle = prompt("Название дополнтельной услуги - 2");
             }
 
-            sum += +prompt("Стоимость дополнтельной услуги?");
+            do {
+                price = prompt("Сколько это будет стоить?")
+            } while (!appData.isNumber(price))
+
+            sum += +price
         }
+
         return sum
     },
     getRollbackMessage: function (price) {
@@ -74,11 +83,8 @@ const appData = {
     },
     getServicePercentPrices: function (fullPrice, rollback) {
         return appData.fullPrice - (appData.fullPrice * (appData.rollback / 100))
-    },
-    logger: function () {
-        console.log(appData.fullPrice);
-        console.log(appData.servicePercentPrice);
     }
+
 }
 
 
