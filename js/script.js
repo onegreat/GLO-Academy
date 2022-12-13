@@ -1,5 +1,30 @@
 'use strict'
 
+const title = document.querySelector('h1')
+const btnHandler = document.getElementsByClassName('handler_btn')
+const btnScreen = document.querySelector('.screen-btn')
+const otherItemsPercent = document.querySelectorAll('.percent')
+const otherItemsNumber = document.querySelectorAll('.number')
+const inputRollback = document.querySelector('.rollback > .main-controls__range > input')
+const spanRollback = document.querySelector('.rollback > .main-controls__range > span')
+let totalInput = document.getElementsByClassName('total-input')
+let result = document.getElementsByClassName('total-input')
+// for (let i = 0; i < totalInput.length; i++) {
+//   result += totalInput[i];
+//   console.log(result)
+// }
+
+console.dir(title)
+console.dir(btnHandler)
+console.dir(btnScreen)
+console.dir(otherItemsPercent)
+console.dir(otherItemsNumber)
+console.dir(inputRollback)
+console.dir(spanRollback)
+console.dir(totalInput.length)
+console.log(result)
+
+
 const appData = {
   title: '',
   screens: [],
