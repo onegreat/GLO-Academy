@@ -3,6 +3,8 @@ const list = document.querySelectorAll('li')
 const block = document.querySelector('body');
 const link = document.querySelectorAll('h2 > a')[4]
 const advertisement = document.querySelector('.adv')
+const newElem = document.createElement('li')
+let indexSearch;
 
 // const list = document.querySelectorAll()
 
@@ -22,10 +24,6 @@ ul[0].prepend(list[3])
 ul[0].prepend(list[1])
 ul[0].prepend(list[0])
 
-link.textContent = "Книга 3. this и Прототипы Объектов"
-
-advertisement.remove()
-
 ul[5].prepend(list[56])
 ul[5].prepend(list[54])
 ul[5].prepend(list[51])
@@ -36,6 +34,20 @@ ul[5].prepend(list[47])
 ul[5].prepend(list[50])
 ul[5].prepend(list[49])
 ul[5].prepend(list[55])
+ul[5].prepend(list[46])
+
+
+link.textContent = "Книга 3. this и Прототипы Объектов"
+
+advertisement.remove()
+
+newElem.textContent = 'Глава 8: За пределами ES6'
+
+indexSearch = list[26]
+indexSearch.insertAdjacentElement('beforebegin', newElem)
+
+
+console.log(indexSearch)
 
 
 changeBgImg();
@@ -43,3 +55,4 @@ console.log(advertisement)
 console.log(link)
 console.log(ul)
 console.log(list)
+console.log(newElem)
