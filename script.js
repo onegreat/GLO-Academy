@@ -6,77 +6,84 @@ const appData = {
     screenPrice: 0,
     adaptive: true,
     rollback: 10,
-    allServicePrice: 0,
+    allServicePrices: 0,
     fullPrice: 0,
     servicePercentPrice: 0,
     services: {},
     start: function () {
         appData.asking()
-        appData.addPrices()
+        appData.getAllServicePrices()
         appData.getFullPrice()
         appData.getServicePercentPrice()
         appData.getTitle()
-
         appData.logger()
     },
     isNumber: function (num) {
         return !isNaN(parseFloat(num)) && isFinite(num)
     },
+
     asking: function () {
-        appData.title = prompt("Как называется проект?", "Калькулятор верстки")
+        let tmp
+        do {
+            tmp = prompt('Как называется ваш проект?', 'Калькулятор верстки')
+        } while (appData.isNumber(tmp))
+        appData.title = tmp
+        for (let i = 0; i < 2; i++) {
+            let screenName
+            do {
+                screenName = prompt('Какие типы экранов нужно разработать?')
+            } while (appData.isNumber(screenName))
+            do {
+                tmp = prompt('Сколько будет стоить данная работа?')
+                if (tmp === null) {
+                    tmp = 0
+                    break
+                }
+                tmp = tmp.trim()
+            } while (!appData.isNumber(tmp))
+            appData.screens.push({ id: i, name: screenName, price: +tmp })
+        }
+
+        appData.screenPrice = appData.screens.reduce((sum, screen) => {
+            return sum + screen.price
+        }, 0)
+
+        appData.adaptive = confirm('Нужен ли адаптив на сайте?')
 
         for (let i = 0; i < 2; i++) {
-            let name = prompt("какие типы экранов нужно разработать?")
-            let price = 0
-
+            let serviceName
             do {
-                price = prompt("Сколько будет стоить данная работа?")
-            } while (!appData.isNumber(price))
-
-            appData.screens.push({ id: i, name: name, price: price })
-        }
-
-        for (let i = 0; i < 2; i++) {
-            let name = prompt("Какой дополнительный тип услуг нужен?")
-            let price = 0
-
+                serviceName = prompt('Какой дополнительный тип услуги нужен?')
+            } while (appData.isNumber(serviceName))
             do {
-                price = prompt("Сколько это будет стоить?")
-            } while (!appData.isNumber(price))
-
-            appData.services[name] = +price
-        }
-
-        appData.adaptive = confirm("Нужен ли адаптив на сайте?")
-    },
-
-    addPrices: function () {
-
-        for (let screen of appData.screens) {
-            appData.screenPrice += +screen.price
-        }
-
-        for (let key in appData.services) {
-            appData.allServicePrice += appData.services[key]
+                tmp = prompt('Сколько это будет стоить?')
+                if (tmp === null) {
+                    tmp = 0
+                    break
+                }
+                tmp = tmp.trim()
+            } while (!appData.isNumber(tmp))
+            appData.services[`${serviceName}(${i + 1})`] = +tmp
         }
     },
-
     getAllServicePrices: function () {
-
-
+        for (const key in appData.services) {
+            appData.allServicePrices += appData.services[key]
+        }
     },
 
     getFullPrice: function () {
-        appData.fullPrice = +appData.screenPrice + appData.allServicePrice
-    },
-
-    getServicePercentPrice: function () {
-        appData.servicePercentPrice = appData.fullPrice - (appData.fullPrice * (appData.rollback / 100))
+        appData.fullPrice = appData.screenPrice + appData.allServicePrices
     },
 
     getTitle: function () {
-        appData.title = appData.title.trim()[0].toUpperCase() + appData.title.trim().substr(1).toLowerCase
+        appData.title = appData.title.trim()[0].toUpperCase() + appData.title.trim().slice(1).toLowerCase()
     },
+
+    getServicePercentPrice: function () {
+        appData.servicePercentPrice = Math.ceil(appData.fullPrice - (appData.fullPrice * (appData.rollback / 100)))
+    },
+
 
     getRollbackMessage: function (price) {
         if (price >= 30000) {
@@ -99,4 +106,3 @@ const appData = {
 
 appData.start()
 
-console.log(typeof appData.title);
