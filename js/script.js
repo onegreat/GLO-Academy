@@ -1,28 +1,19 @@
 'use strict'
 
 const title = document.getElementsByTagName('h1')[0].textContent
-const btnHandler = document.getElementsByClassName('handler_btn')
+const startBtn = document.getElementsByClassName('handler_btn')[0]
+const resetBtn = document.getElementsByClassName('handler_btn')[1]
 const btnScreen = document.querySelector('.screen-btn')
-const otherItemsPercent = document.querySelectorAll('.percent')
-const otherItemsNumber = document.querySelectorAll('.number')
+const otherItemsPercent = document.querySelectorAll('.other-items.percent')
+const otherItemsNumber = document.querySelectorAll('.other-items.number')
 const inputRollback = document.querySelector('.rollback > .main-controls__range > input')
 const spanRollback = document.querySelector('.rollback > .main-controls__range > span')
-let totalInputEls = []
+const screenPrice = document.getElementsByClassName('total-input')[0]
+const screenCount = document.getElementsByClassName('total-input')[1]
+const servicePrices = document.getElementsByClassName('total-input')[2]
+const fullPrice = document.getElementsByClassName('total-input')[3]
+const totalPrice = document.getElementsByClassName('total-input')[4]
 let screen = document.querySelectorAll('.screen')
-// for (let i = 0; i < totalInput.length; i++) {
-//   result += totalInput[i];
-//   console.log(result)
-// }
-
-console.dir(title)
-console.dir(btnHandler)
-console.dir(btnScreen)
-console.dir(otherItemsPercent)
-console.dir(otherItemsNumber)
-console.dir(inputRollback)
-console.dir(spanRollback)
-console.dir(totalInputEls)
-console.log(screen)
 
 
 const appData = {
@@ -123,8 +114,4 @@ const appData = {
 }
 
 appData.start()
-
-for (const iterator of document.getElementsByClassName('total-input')) {
-  totalInputEls.push(iterator)
-}
 
