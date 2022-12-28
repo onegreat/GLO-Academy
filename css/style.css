@@ -1,0 +1,6 @@
+.hero-container {
+    width: 250px;
+    box-sizing: border-box;
+    display: block;
+    margin: 50vh auto;
+}
