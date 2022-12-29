@@ -20,9 +20,9 @@ const timeDate = () => {
     if (isHours >= 7 && isHours <= 10) {
         timeHello.textContent = "Доброе утро!"
     } else if (isHours > 11 && isHours <= 17) {
-        timeHello.textContent = "Доброе день!"
+        timeHello.textContent = "Добрый день!"
     } else if (isHours > 18 && isHours <= 22) {
-        timeHello.textContent = "Доброе вечер!"
+        timeHello.textContent = "Добрый вечер!"
     } else if (isHours > 23 && isHours <= 24) {
         timeHello.textContent = "Доброй ночи!"
     } else if (isHours == 0 && isHours <= 6) {
@@ -34,21 +34,8 @@ const timeDate = () => {
 
 const isDay = () => {
 
-    if (date.getDay() == 1) {
-        timeDay.textContent = 'Сегодня: понедельник'
-    } else if (date.getDay() == 2) {
-        timeDay.textContent = 'Сегодня: вторник'
-    } else if (date.getDay() == 3) {
-        timeDay.textContent = 'Сегодня: среда'
-    } else if (date.getDay() == 4) {
-        timeDay.textContent = 'Сегодня: четверг'
-    } else if (date.getDay() == 5) {
-        timeDay.textContent = 'Сегодня: пятница'
-    } else if (date.getDay() == 6) {
-        timeDay.textContent = 'Сегодня:  суббота'
-    } else if (date.getDay() == 7) {
-        timeDay.textContent = 'Сегодня:  воскресенье'
-    }
+    timeDay.textContent = date.toLocaleString('ru-RU', { weekday: 'long' })
+
 }
 
 const updateClock = setInterval(() => {
@@ -60,6 +47,16 @@ const updateClock = setInterval(() => {
     timerMinutes.textContent = minutes
     timerSeconds.textContent = seconds
 
+    updateTimeSet()
+
+}, 1000);
+
+const updateTimeSet = () => {
+    let dateNow = new Date()
+    let hour = dateNow.getHours()
+    let minutes = dateNow.getMinutes()
+    let seconds = dateNow.getSeconds()
+
     if (hour < 10) {
         timerHours.textContent = '0' + hour
     } else if (minutes < 10) {
@@ -67,8 +64,7 @@ const updateClock = setInterval(() => {
     } else if (seconds < 10) {
         timerSeconds.textContent = '0' + seconds
     }
-
-}, 1000);
+}
 
 const newYear = () => {
     today = new Date()
@@ -80,9 +76,6 @@ const newYear = () => {
     test = Math.round(nextDate.getTime() - today.getTime())
     daysLeft = Math.round((nextDate.getTime() - today.getTime()) / msPerDay);
     dayname = ""
-    console.log(nextDate.getTime())
-    console.log(today.getTime())
-    console.log(daysLeft)
     ds = "" + daysLeft
     //Вырезаем последнею цифру
     dd = parseInt(ds.substr(ds.length - 1))
